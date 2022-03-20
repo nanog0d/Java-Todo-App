@@ -1,0 +1,5 @@
+package com.nano.todoapp.dao;
+
+public interface TodoDAO {
+
+}

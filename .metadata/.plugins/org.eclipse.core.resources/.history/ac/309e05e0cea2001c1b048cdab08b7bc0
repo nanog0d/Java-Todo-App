@@ -1,0 +1,40 @@
+package com.nano.todoapp.services;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.nano.todoapp.pojo.Todo;
+
+@Service
+public class DefaultTodoService implements TodoService {
+	
+	private List<Todo> listOfTodos = new ArrayList<>(Arrays.asList(
+			new Todo(1, "Code", "Code till hibernate", false, new Date(), new Date()),
+			new Todo(2, "Java", "Java till hibernate", false, new Date(), new Date()),
+			new Todo(3, "AOP", "AOP till hibernate", false, new Date(), new Date()),
+			new Todo(4, "Exception Handling", "Exception Handling till hibernate", false, new Date(), new Date()),
+			new Todo(5, "Hibernate Connection", "DB setup and connection", false, new Date(), new Date())
+	));
+
+	@Override
+	public List<Todo> getTodos() {
+		
+		return this.listOfTodos;
+	}
+
+	@Override
+	public int addTodo(Todo todo){
+		boolean todoExists = this.listOfTodos.stream().anyMatch((existTodo) -> existTodo.getTitle().equals(todo.getTitle()));
+		if(todoExists) {
+			return -1;
+		}
+		todo.setId(this.listOfTodos.size());
+		this.listOfTodos.add(todo);
+		return 0;
+	}
+
+}

@@ -1,0 +1,61 @@
+package com.nano.todoapp.controller;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.nano.todoapp.pojo.CustomException;
+import com.nano.todoapp.pojo.Todo;
+import com.nano.todoapp.services.TodoService;
+import com.nano.todoapp.util.ExceptionUtil;
+import com.nano.todoapp.util.ResponseUtil;
+
+@RestController
+@RequestMapping("/todo-app")
+public class TodoController {
+	
+	@Autowired
+	private TodoService todoService;
+	
+	@Autowired
+	private ResponseUtil responseUtil;
+	
+	@GetMapping("/todos")
+	public ResponseEntity<Object> getTodos() {
+//		responseUtil.getResponseEntity(this.todoService.getTodos(), null)
+		return this.todoService.getTodos();
+	}
+	
+	@PostMapping("/todo")
+	public ResponseEntity<Object> addTodo(@RequestBody Todo todo) throws CustomException{
+		this.todoService.addTodo(todo);
+		return responseUtil.getResponseEntity(this.todoService.addTodo(todo), HttpStatus.OK);
+	}
+	
+	@GetMapping("/todo/{id}")
+	public ResponseEntity<Object> getTodo(@PathVariable int id) throws CustomException{
+		Todo todo = this.todoService.getTodo(id);
+		return responseUtil.getResponseEntity(this.todoService.getTodo(id), HttpStatus.OK);
+	}
+	
+	@PutMapping("/todo/{id}")
+	public ResponseEntity<Object> updateTodo(@PathVariable int id, @RequestBody Todo updatedTodo){
+		Map<String, Object> response = new HashMap<String, Object>();
+		
+		ExceptionUtil.throwExceptionIftrue(this.todoService.updateTodo(updatedTodo) == -1, "Unable to update Todo");
+		
+		return new ResponseEntity<Object>(response, HttpStatus.OK);
+	}
+
+}

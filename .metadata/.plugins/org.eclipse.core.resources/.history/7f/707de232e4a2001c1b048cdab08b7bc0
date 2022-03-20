@@ -1,0 +1,26 @@
+package com.nano.todoapp.util;
+
+import com.nano.todoapp.pojo.CustomException;
+
+public class ExceptionUtil {
+	
+	
+//	private CustomException customException = null;
+	
+	public ExceptionUtil() {
+//		if(customException == null) this.customException = new CustomException();
+	}
+	
+	// TODO: Create singleton instance of the custom exception that will be thrown with different messages.
+	public static Object throwExceptionIftrue(boolean condition, String message) throws CustomException {
+//		ExceptionUtil util = new ExceptionUtil();
+		if(condition) {
+//			util.customException.setMessage(message);
+//			throw util.customException;
+			throw new CustomException(message);
+		}
+		
+		return false;
+	}
+
+}

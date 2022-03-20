@@ -1,0 +1,13 @@
+package com.nano.todoapp.services;
+
+import java.util.List;
+
+import com.nano.todoapp.pojo.Todo;
+
+public interface TodoService {
+	
+	public List<Todo> getTodos();
+	
+	public int addTodo(Todo todo);
+
+}

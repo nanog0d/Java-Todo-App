@@ -1,0 +1,5 @@
+package com.nano.todoapp.services;
+
+public interface TodoService {
+
+}

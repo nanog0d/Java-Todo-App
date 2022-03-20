@@ -1,0 +1,13 @@
+package com.nano.todoapp.util;
+
+import com.nano.todoapp.pojo.CustomException;
+
+public class ExceptionUtil {
+	
+	public static Object throwExceptionIftrue(boolean condition, String message) throws CustomException {
+		if(condition) throw new CustomException(message);
+		
+		return false;
+	}
+
+}

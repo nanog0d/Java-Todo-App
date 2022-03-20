@@ -1,0 +1,7 @@
+# HTTP port
+server.port=8081
+
+# Logging level
+
+
+# Actuators

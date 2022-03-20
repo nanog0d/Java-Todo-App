@@ -1,0 +1,16 @@
+package com.nano.todoapp.services;
+
+import org.springframework.http.ResponseEntity;
+
+import com.nano.todoapp.pojo.Todo;
+
+public interface TodoService {
+	
+	public ResponseEntity<Object> getTodos();
+	
+	public int addTodo(Todo todo);
+	
+	public Todo getTodo(int id);
+
+	public int updateTodo(Todo updatedTodo);
+}

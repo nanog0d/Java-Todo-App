@@ -1,0 +1,11 @@
+package com.nano.todoapp.util;
+
+public class ExceptionUtil {
+	
+	public static Object throwExceptionIftrue(boolean condition) throws Exception {
+		if(condition) throw new Exception();
+		
+		return false;
+	}
+
+}

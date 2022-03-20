@@ -1,0 +1,17 @@
+package com.nano.todoapp.util;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+public class ResponseUtil {
+
+	public ResponseEntity<Object> getResponseEntity(Object data, HttpStatus status){
+		Map<String, Object> response = new HashMap<String, Object>();
+		response.put("status", status);
+		if(data != null) response.put("data", data);
+		return new ResponseEntity<Object>(response, status);
+	}
+}

@@ -1,0 +1,17 @@
+package com.nano.todoapp.pojo;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+@ControllerAdvice
+public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
+	
+	@ExceptionHandler(CustomException.class)
+	public ResponseEntity<CustomExceptionResponse> handleException(CustomException exception){
+		CustomExceptionResponse exceptionResponse = new CustomExceptionResponse("Bad Request", exception.getMessage(), HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<CustomExceptionResponse>(exceptionResponse, HttpStatus.BAD_REQUEST);
+	}
+}

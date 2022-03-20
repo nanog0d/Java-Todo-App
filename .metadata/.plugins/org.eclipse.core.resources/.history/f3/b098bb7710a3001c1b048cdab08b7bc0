@@ -1,0 +1,18 @@
+package com.nano.todoapp.dao;
+
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.nano.todoapp.pojo.Todo;
+
+@Repository
+public class DefaultTodoDAO implements TodoDAO {
+
+	@Override
+	public List<Todo> findAll() {
+		
+		return null;
+	}
+
+}

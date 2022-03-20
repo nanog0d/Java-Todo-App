@@ -1,0 +1,15 @@
+package com.nano.todoapp.services;
+
+import java.util.List;
+
+import com.nano.todoapp.pojo.Todo;
+
+public class DefaultTodoService implements TodoService {
+
+	@Override
+	public List<Todo> getTodos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,29 @@
+package com.nano.todoapp.pojo;
+
+import java.sql.Timestamp;
+import java.util.Date;
+
+public class Todo {
+	
+	private int id;
+	private String title;
+	private String description;
+	private boolean completed;
+	private Date createdOn;
+	private Date lastUpdatedOn;
+	
+	public Todo() {}
+
+	public Todo(String title, String description, boolean completed, Date createdOn, Date lastUpdatedOn) {
+		this.title = title;
+		this.description = description;
+		this.completed = completed;
+		this.createdOn = createdOn;
+		this.lastUpdatedOn = lastUpdatedOn;
+	}
+	
+	
+	
+	
+
+}
